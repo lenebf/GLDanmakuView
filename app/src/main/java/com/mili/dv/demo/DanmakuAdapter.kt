@@ -65,18 +65,15 @@ class DanmakuAdapter(private val context: Context) : DanmakuView.Adapter() {
         leftPosition: Int,
         speed: Int
     ): DanmakuItem? {
-        return if (showIndex < sampleData.size) {
-            SimpleDanmakuItem(
-                context,
-                sampleData[showIndex],
-                topPosition,
-                leftPosition,
-                speed
-            ).also {
-                showIndex++
-            }
-        } else {
-            null
+        val realIndex = showIndex % sampleData.size
+        return SimpleDanmakuItem(
+            context,
+            sampleData[realIndex],
+            topPosition,
+            leftPosition,
+            speed
+        ).also {
+            showIndex++
         }
     }
 

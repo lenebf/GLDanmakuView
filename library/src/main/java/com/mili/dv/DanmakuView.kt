@@ -3,7 +3,6 @@ package com.mili.dv
 import android.content.Context
 import android.os.*
 import android.util.AttributeSet
-import android.util.Log
 import android.util.SparseArray
 import android.util.SparseIntArray
 import androidx.core.util.isEmpty
@@ -255,10 +254,6 @@ class DanmakuView : GLView {
                 // 该行没有弹幕或者最后一个弹幕已完全可见，需要添加新的弹幕
                 val visibility = getItemVisible(item)
                 if (visibility == NONE || visibility == VISIBLE_COMPLETELY) {
-                    Log.d(
-                        "debug_info",
-                        "$item {\"leftPosition\":${item?.leftPosition}, \"visibility\":$visibility}"
-                    )
                     val result = addDanmakuItem(i)
                     (visibility == VISIBLE_COMPLETELY).yes {
                         adapter!!.onDanmakuItemCompletelyVisible(i, item!!)
